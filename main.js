@@ -1,16 +1,51 @@
+class Class{
+    constructor({
+        name,
+        video,
+        comments = [],
+    }){
+        this.name = name;
+        this.video = video;
+        this.comments = comments;
+    }
+
+    addComment(comment){
+        this.comments.push(comment);
+    }
+    addVideo(video){
+        this.video = video;
+    }
+}
+
+class Course {
+    constructor({
+        name,
+        classes = [],
+    }){
+        this.name = name;
+        this.classes = classes;
+    }
+}
+
+const cursoFundamentosJS = new Course({
+    name: "Curso de Fundamentos de Javascript",
+})
+
+const cursoHTMLyCSS= new Course({
+    name: "Curso de HTML y CSS"
+});
+
+const cursoPracticoHTMLyCSS= new Course({
+    name: "Curso practico de HTML y CSS"
+});
+
 class LearningPaths {
     constructor({
         name,
         courses = [],
-        students = [],
     }){
         this.name = name;
         this.courses = courses;
-        this.students = students;
-    }
-
-    addStudent(student){
-        this.students.push(student);
     }
 
     addCourse(course){
@@ -21,9 +56,9 @@ class LearningPaths {
 const escuelaDesarrolloWeb = new LearningPaths({
     name: 'Escuela de Desarrollo Web',
     courses: [
-        'Fundamentos de JavaScript',
-        'Curso de HTML y CSS',
-        'Curso Practico de HTML y CSS'
+        cursoFundamentosJS,
+        cursoHTMLyCSS,
+        cursoPracticoHTMLyCSS,
     ],
 });
 
