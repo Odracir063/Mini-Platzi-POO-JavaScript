@@ -1,11 +1,23 @@
-class Class{
+
+
+function videoPlay(id){
+    const urlSecreta = "https://platzimassecretoquelanasa.com" +  id;
+    console.log("Se esta reproduciendo desde la url " + urlSecreta);
+}
+
+function videoStop(id){
+    const urlSecreta = "https://platzimassecretoquelanasa.com" +  id;
+    console.log("Pausamos la url " + urlSecreta);
+}
+
+export class PlatziClass{
     constructor({
         name,
-        video,
+        videoID,
         comments = [],
     }){
         this.name = name;
-        this.video = video;
+        this.videoID = videoID;
         this.comments = comments;
     }
 
@@ -13,7 +25,14 @@ class Class{
         this.comments.push(comment);
     }
     addVideo(video){
-        this.video = video;
+        this.videoID = video;
+    }
+    reproducir(){
+        videoPlay(this.videoID);
+    }
+
+    pausar(){
+        videoStop(this.videoID);
     }
 }
 
