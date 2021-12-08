@@ -1,3 +1,23 @@
+class Comment {
+
+    constructor({
+        content,
+        studentName,
+        studentRole = "estudiante",
+    }){
+        this.content = content;
+        this.studentName = studentName;
+        this.studentRole = studentRole;
+        this.likes = 0;
+    }
+
+    publicar(){
+        console.log(this.studentName + "(" + this.studentRole + ")");
+        console.log(this.likes + " likes");
+        console.log(this.content);
+    }
+}
+
 
 
 function videoPlay(id){
@@ -135,6 +155,13 @@ class Student{
         this.learningPaths = learningPaths;
     }
 
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+        });
+        comment.publicar();
+    }
 
 }
 
@@ -176,7 +203,34 @@ class ExpertStudent extends Student{
     
 }
 
+class TeacherStudent extends Student{
+    constructor(props){
+        super(props);
+    }
+    approveCourse(){
+        this.approveCourses.push(newCourse);
+    }
 
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+            studentRole: "profesor",
+        })
+        comment.publicar();
+    }
+    
+}
+
+
+
+const freddy = new TeacherStudent({
+    name: "Freddy Vega",
+    email: "Freddy@gmail.com",
+    username: "Freddy3000",
+    age: 34,
+    twitter: "freddier",
+})
 
 
 
