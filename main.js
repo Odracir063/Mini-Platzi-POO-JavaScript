@@ -22,8 +22,21 @@ class Course {
         name,
         classes = [],
     }){
-        this.name = name;
+        this._name = name;
         this.classes = classes;
+    }
+
+    get name(){
+        return this._name;
+    }
+
+    set name(name){
+        if (name === "Curso Malito de Fundamentos de Javascript"){
+            console.error("Web... no");
+        }else{
+            this._name = name;
+        }
+        
     }
 }
 
