@@ -1,35 +1,88 @@
-const natalia = {
-    name: 'Natalia',
-    age: 20,
-    cursosAprobados: [
-        "Curso Definitivo de HTML y CSS",
-        "Curso Practico de HTML y CSS",
-
-    ],
-    aprobarCurso(nuevoCurso) {
-        this.cursosAprobados.push(nuevoCurso);
+class LearningPaths {
+    constructor({
+        name,
+        courses = [],
+        students = [],
+    }){
+        this.name = name;
+        this.courses = courses;
+        this.students = students;
     }
-};
 
+    addStudent(student){
+        this.students.push(student);
+    }
 
-// Hacer que natalia aprenda otro curso
-
-natalia.aprobarCurso("JS_Basico");
-
-
-//creamos el primer prototipo
-
-function Student(name, age, cursosAprobados){
-    this.name = name;
-    this.age = age;
-    this.cursosAprobados = cursosAprobados;
-    
+    addCourse(course){
+        this.courses.push(course);
+    }
 }
 
-Student.prototype.aprobarCurso = function (nuevoCurso){
-    this.cursosAprobados.push(nuevoCurso);
+const escuelaDesarrolloWeb = new LearningPaths({
+    name: 'Escuela de Desarrollo Web',
+    courses: [
+        'Fundamentos de JavaScript',
+        'Curso de HTML y CSS',
+        'Curso Practico de HTML y CSS'
+    ],
+});
+
+const escuelaComputerScience = new LearningPaths({
+    name: 'Escuela de Computer Science',
+    courses: [
+        'Fundamentos de la Ingenieria de Software',
+        'Curso de fundamentos matematicos',
+        'Curso de calculo integral',
+        'Curso de programacion estructurada'
+    ],
+});
+
+
+class Student{
+    constructor({
+        name,
+        username,
+        age,
+        email,
+        twitter = undefined,
+        instagram = undefined,
+        facebook = undefined,
+        approvedCourses = [],
+        learningPaths = [],
+    }){
+        this.name = name;
+        this.username = username;
+        this.age = age;
+        this.email = email;
+        this.socialMedia = {
+            twitter,
+            instagram,
+            facebook,
+        }
+        this.approvedCourses = approvedCourses;
+        this.learningPaths = learningPaths;
+    }
 }
 
-const juanita = new Student('Juanita', 20, ["Curso de JS", "Terminal y linea de comandos"]);
+const juan2 = new Student({
+    name: "Juan",
+    email: "juanpepe@gmail.com",
+    username: "JuanPepe3000",
+    age: 34,
+    twitter: "fjuandc",
+    learningPaths: [
+        escuelaComputerScience,
+        escuelaDesarrolloWeb,
+    ],
+})
 
-
+const miguelito2 = new Student({
+    name: "Miguel",
+    email: "miguelito@gmail.com",
+    username: "miguelote",
+    age: 21,
+    twitter: "fmiguelito",
+    learningPaths: [
+        escuelaDesarrolloWeb,
+    ],
+})
